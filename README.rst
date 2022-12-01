@@ -37,8 +37,7 @@ Running with ``aocd``
 
 .. note::
 
-    Oh, oh, no! 🎅
-    This does not work yet – stay tuned! 👀
+    *Oh, oh, no! 🎅 This does not work yet – stay tuned! 👀*
 
 The module can be installed to allow running it with
 `aocd <https://github.com/wimglenn/advent-of-code-data>`_.
