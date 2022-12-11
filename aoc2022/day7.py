@@ -3,7 +3,7 @@ from collections import defaultdict
 import io
 
 Directory = "dict[str, int | Directory]"
-ROOT = "/"
+ROOT = ""
 
 
 def nested_default_dict():
@@ -23,7 +23,7 @@ def read_tree(data: io.StringIO) -> Directory:
     for line in data:
         if line.startswith("$ cd"):
             target = line.split()[-1].strip()
-            if target == ROOT:
+            if target == "/":
                 location = [ROOT]
             elif target == "..":
                 location.pop()
@@ -51,7 +51,7 @@ def directory_size(
             total += content
         else:
             total += yield from directory_size(content, location + "/" + child)
-    yield (location if location else "/"), total
+    yield location, total
     return total
 
 
