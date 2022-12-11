@@ -10,6 +10,10 @@ No dependencies, no speed hacks:
 pythonic code with just the standard library. 👍
 Well, unless I'm too annoyed by the challenge of the day. 🤪
 
+Most of the code is written the way I would write $DAYJOB code:
+generic, reusable, modular and aimed at data streams. 🏢
+In other words, it is somewhat over-engineered and could be reduced
+for just the specific task of each day. ✂︎
 Feel free to take a look around and find inspiration. 🤔
 
 Usage 🎅🤶

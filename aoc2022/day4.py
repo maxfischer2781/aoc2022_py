@@ -1,3 +1,10 @@
+"""
+Day 4 - Camp Cleanup 😬
+
+Not much to say on this. Parse the range by simple string splitting,
+compute the overlaps. You can apply some logic to use less comparisons,
+but it's mostly rote work.
+"""
 from typing import Any, Iterator
 import io
 
