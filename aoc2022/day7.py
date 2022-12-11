@@ -1,4 +1,4 @@
-from typing import Any, Iterator
+from typing import Any, Generator
 from collections import defaultdict
 import io
 
@@ -42,22 +42,22 @@ def read_tree(data: io.StringIO) -> Directory:
     return undefault(tree)
 
 
-# TODO: write as generator using `yield from`
-def directory_size(tree: Directory, location: str, seen: dict) -> int:
+def directory_size(
+    tree: Directory, location: str
+) -> Generator[tuple[str, int], None, int]:
     total = 0
     for child, content in tree.items():
         if not isinstance(content, dict):
             total += content
         else:
-            total += directory_size(content, location + "/" + child, seen=seen)
-    seen[location if location else "/"] = total
+            total += yield from directory_size(content, location + "/" + child)
+    yield (location if location else "/"), total
     return total
 
 
 def solve(data: io.StringIO) -> tuple[Any, Any]:
     tree = read_tree(data)
-    directory_sizes = {}
-    directory_size(tree[ROOT], '', directory_sizes)
+    directory_sizes = dict(directory_size(tree[ROOT], ''))
     required = 30000000 - (70000000 - directory_sizes[ROOT])
     return sum(size for size in directory_sizes.values() if size <= 100000), min(
         size for size in directory_sizes.values() if size >= required
