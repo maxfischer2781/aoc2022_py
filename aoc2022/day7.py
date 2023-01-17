@@ -29,11 +29,7 @@ def read_tree(data: io.StringIO) -> Directory:
                 location.pop()
             else:
                 location.append(target)
-        elif line.startswith("$ ls"):
-            pass
-        elif line.startswith("dir"):
-            pass
-        else:
+        elif not line.startswith("$") and not line.startswith("dir"):
             size, name = line.split()
             cwd = tree
             for directory in location:
